@@ -29,6 +29,8 @@ Route::prefix('v1')->group(function () {
             Route::get('/info/{id}', 'API\MoviesController@info');
             // v1/moviedb/movies/catgory/{id}
             Route::get('/category/{id}', 'API\MoviesController@category');
+            // v1/moviedb/movies/search
+            Route::get('/search', 'API\MoviesController@search');
         }); 
     });
 

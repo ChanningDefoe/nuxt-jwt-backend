@@ -35,8 +35,27 @@ class MoviesController extends Controller
         return response()->json($this->helper->info($request->id));
     }
 
+    /**
+     * Category
+     * 
+     * @return json
+     */
     public function category(Request $request)
     {
         return response()->json($this->helper->category($request->id, $request->page));
     }
+
+    /**
+     * Search
+     * 
+     * @param string query
+     * @param string page
+     * 
+     * @return json
+     */
+    public function search(Request $request)
+    {
+        return response()->json($this->helper->search($request->search, $request->page));
+    }
+
 }

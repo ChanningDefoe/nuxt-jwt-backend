@@ -92,4 +92,29 @@ class APIHelper {
         return $this->guzzleGet($url, $params);
     }
 
+    /**
+     * Search Movies
+     * 
+     * @param string $query | search query
+     * @param string $page | page to query
+     * 
+     * @return response array
+     */
+    public function search($query, $page = null)
+    {
+        $url = $this->url . '/search/movie';
+        $params = array(
+            'language' => 'en-us',
+            'sortby' => 'popularity.desc',
+            'include_adult' => false,
+            'query' => $query
+        );
+        // Also add page if it exists
+        // Idk I might add pagination later
+        if ($page){
+            $params['page'] = $page;
+        }
+        return $this->guzzleGet($url, $params);
+    }
+
 }
