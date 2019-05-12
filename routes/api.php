@@ -12,5 +12,24 @@ Route::prefix('v1')->group(function () {
         // v1/auth/user
         Route::get('/user', 'AuthController@user');
     });
-    
+
+    // v1/user
+    Route::prefix('user')->group(function () {
+        // v1/user/addToWatchList
+        Route::post('/addToWatchList', 'UserController@addToWatchList');
+    });
+
+    // v1/moviedb
+    Route::prefix('moviedb')->group(function () {
+        // v1/moviedb/movies
+        Route::prefix('movies')->group(function () {
+            // v1/moviedb/movies/trending
+            Route::get('/trending', 'API\MoviesController@trending');
+            // v1/moviedb/movies/info/{id}
+            Route::get('/info/{id}', 'API\MoviesController@info');
+            // v1/moviedb/movies/catgory/{id}
+            Route::get('/category/{id}', 'API\MoviesController@category');
+        }); 
+    });
+
 });
