@@ -60,4 +60,12 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    /**
+     * User Watch List
+     */
+    public function watchListMovies()
+    {
+        return $this->hasMany('App\WatchList', 'user_id', 'id');
+    }
+
 }

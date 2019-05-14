@@ -15,8 +15,10 @@ Route::prefix('v1')->group(function () {
 
     // v1/user
     Route::prefix('user')->group(function () {
-        // v1/user/addToWatchList
-        Route::post('/addToWatchList', 'UserController@addToWatchList');
+        // v1/user/watchlist
+        Route::get('/watchlist', 'UserController@getWatchList');
+        // v1/user/watchlist/add
+        Route::post('/watchlist/add', 'UserController@addToWatchList');
     });
 
     // v1/moviedb

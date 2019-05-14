@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\WatchList;
+use App\Http\Resources\WatchList as WatchListResource;
 
 class UserController extends Controller
 {   
@@ -12,6 +13,19 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+    }
+
+    /**
+     * Get watch list for authenticated user
+     * 
+     */
+    public function getWatchList(Request $request)
+    {
+        return response()->json(
+            auth()->user()->watchListMovies()
+            ->orderBy('created_at', 'desc')
+            ->paginate(8)
+        );
     }
 
     /**
